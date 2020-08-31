@@ -25,7 +25,7 @@ export default function ListLog(props){
     return(
         <div className='mb-4 li-bg m-2'>
           <Card.Body>
-          <Table hover responsive="md" size="sm" >
+          <Table hover responsive="md">
               <thead>
                   <tr>
                     {

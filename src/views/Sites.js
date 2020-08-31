@@ -62,7 +62,10 @@ export default function Site(){
         setNode(val);
         history.push({
             pathname: '/objdetail',
-            state: { node: val }
+            state: { 
+                node: val,
+                site_id: inputForm.newSiteID
+            }
         })   
     }
 
@@ -162,38 +165,41 @@ export default function Site(){
     
     return (
         <div className="container-2col">
-            <div className="card-sm-bg col-g-1 m-4">
-                <div className="title-wrp c-ec-title">
-                    <h5 className="center">Site List</h5>
-                    <button className="button-add" onClick={(e) => setShow1(true)} title="Add New Site"><i className="fas fa-2x fa-plus-square"></i></button>
+            <div className="card-sm-bg col-g-2">
+                <h5 className="c-ec-title"><i className="fas fa-warehouse"></i> Site List</h5>
+                <div className="p-1">
+                    <List data={sitesData} columns={['ID','Name','Location']} sendData={setSite} remove={removeSelectedSite} edit={editSelectedSite}/>
                 </div>
-                <List data={sitesData} columns={['ID','Name','Location']} sendData={setSite} remove={removeSelectedSite} edit={editSelectedSite}/>
+                <div className="button-content">
+                    <button className="button-add" onClick={(e) => setShow1(true)} title="Add New Site"><i className="fas fa-2x fa-plus"></i></button>
+                </div>
             </div>
             
-            <div className="card-sm-bg col-g-2 m-4">
-                <div className="title-wrp c-ec-title">
+            <div className="card-sm-bg col-g-2">
+                <div className="c-ec-title">
                     <h5>Object List</h5>
-                    {objectsData ? (<button className="button-add" onClick={(e) => setShow2(true)} title="Add New Object"><i className="fas fa-2x fa-plus-square"></i></button>) : ( <div></div>)}
                 </div>
-
                     {objectsData ? (
-                        <div>
+                        <div className="p-1">
                             <List data={objectsData} columns={['ID','Name','Location']}sendData={getSelect} remove={removeSelectedObj} edit={editSelected}/>
                         </div>
                     ):(
-                        <div>
+                        <div className="p-1">
                             <p>Select Site to show Objects</p>
                             <List data={[]} columns={['ID','Name','Location']}/>
                         </div>
                     )}
+                    <div className="button-content">
+                        {objectsData ? (<button className="button-add" onClick={(e) => setShow2(true)} title="Add New Object"><i className="fas fa-2x fa-plus"></i></button>) : ( <div></div>)}
+                    </div>
 
             </div>
 
-            <Modal show={show1} onHide={(e) => setShow1(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Add new Site </Modal.Title>
+            <Modal show={show1} onHide={(e) => setShow1(false)}  dialogClassName="modal-d">
+                <Modal.Header   closeButton>
+                    <Modal.Title >Add new Site </Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body> 
                 <div>
                     <form onSubmit={addNewSite}>
                     <div>
@@ -208,16 +214,16 @@ export default function Site(){
                     </form>
                 </div>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>
 
-            <Modal show={show2} onHide={(e) => setShow2(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Add new Object</Modal.Title>
+            <Modal show={show2} onHide={(e) => setShow2(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Add new Object</Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                 <div>
                     <form onSubmit={addNewObj}>
                         <div>
@@ -244,16 +250,16 @@ export default function Site(){
                     </form>
                 </div>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>
 
-            <Modal show={show3} onHide={(e) => setShow3(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Edit Object </Modal.Title>
+            <Modal show={show3} onHide={(e) => setShow3(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Edit Object </Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                 <div>
                     <form onSubmit={editObj}>
                         <div>
@@ -281,48 +287,48 @@ export default function Site(){
                     </form>
                 </div>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>
 
             
-            <Modal show={show4} onHide={(e) => setShow4(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Remove Selected Site</Modal.Title>
+            <Modal show={show4} onHide={(e) => setShow4(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Remove Selected Site</Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                     <form onSubmit={removeSite}>
                         <p>{inputForm.newSiteName} will be removed.</p>
                         {objectsData && <p>The Site have {objectsData.length} object.</p>}
                         <input type="submit" value="Remove" />
                     </form>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>
 
-            <Modal show={show6} onHide={(e) => setShow6(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Remove Selected Object</Modal.Title>
+            <Modal show={show6} onHide={(e) => setShow6(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Remove Selected Object</Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                     <form onSubmit={removeObject}>
                         <p>{inputForm.newObjName} will be removed.</p>
                         <input type="submit" value="Remove" />
                     </form>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>
 
-            <Modal show={show5} onHide={(e) => setShow5(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Edit Site </Modal.Title>
+            <Modal show={show5} onHide={(e) => setShow5(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Edit Site </Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                 <div>
                     <form onSubmit={editSite}>
                         <div>
@@ -337,7 +343,7 @@ export default function Site(){
                     </form>
                 </div>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                 <p>{message}</p>
                 </Modal.Footer>
             </Modal>

@@ -28,7 +28,7 @@ export default function System(){
 
     return(
         <>
-        <div className="container-2col mt-4">
+        <div className="container-2col-center">
             <div className="card-sm-bg col-g-2 ">
                 <h5 className="c-ec-title">System Log</h5>
                 <div className="p-1">

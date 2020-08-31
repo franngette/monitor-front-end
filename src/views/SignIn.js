@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import {Spinner} from 'react-bootstrap';
 import {dataService} from '../services/monitorServices';
 import { useHistory } from 'react-router-dom';
+import logo from '../assets/path874.png'
 
 export default function SignIn() {
     
@@ -44,6 +45,7 @@ export default function SignIn() {
     return(
         <div className="centeredForm">
             <div className="card-cont">
+            <img src={logo} className="logo-singin" />
                 <form className="form-singin" onSubmit={SignIn}>
                     <div className="item-singin">
                         <input type="text" placeholder="Username" required value={inputForm.username} name="username" onChange={handleChange}></input>

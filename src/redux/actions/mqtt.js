@@ -53,27 +53,32 @@ export function messageHandler (client) {
     return function (dispatch) {
       return client.on('message',function(topic, message, packet){
         let result = {
-            message: ''+message,
+            message: '' + message,
             topic: packet.topic,
-            status: true
+            status: true,
+            sensor_name: ''
         }
             if (message.length>0){
                 let sensorId = result.topic.substring(result.topic.length - 1)
                 let sysTopic = result.topic.substring(28, result.topic.length)
                     switch(sensorId){
                         case "1":
+                                result['sensor_name'] = "Temperature"
                                 dispatch( {type: TEMPERATURE, payload: result})
                                 dispatch({type: MESSAGETEMP, payload: false})
                             break
                         case "2":
+                                result['sensor_name'] = "Humidity"
                                 dispatch( {type: HUMIDITY, payload: result})
                                 dispatch({type: MESSAGEHUM, payload: false})
                             break
                         case "3":
+                                result['sensor_name'] = "Power"
                                 dispatch( {type: POWER, payload: result})
                                 dispatch({type: MESSAGEPOW, payload: false})
                             break
                         case "4":
+                                result['sensor_name'] = "CO2"
                                 dispatch( {type: CO2, payload: result})
                                 dispatch({type: MESSAGECO2, payload: false})
                             break

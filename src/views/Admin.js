@@ -88,21 +88,21 @@ export default function Admin(){
 
     return(
         <>
-        <div className="card-sm-bg mt-4">
-            <div className="title-wrp c-ec-title">
-                <h5 className="center">Users List</h5>
-                <button className="button-add" title="Add New User" onClick={(e) => setShow1(true)}><i className="fas fa-2x fa-plus-square"></i></button>
-            </div>
+        <div className="card-admin">
+                <h5 className="c-ec-title">Users List</h5>
             <div className="p-1">
                 <List data={users} columns={['Username','Email','Web Role']} sendData={doNot} remove={removeSelectedUser} edit={editSelectedUser}/>
+                <div className="button-content">
+                    <button className="button-add" title="Add New User" onClick={(e) => setShow1(true)}><i className="fas fa-2x fa-user-plus"></i></button>
+                </div>
             </div>
         </div>
             
-            <Modal show={show1} onHide={(e) => setShow1(false)}>
-            <Modal.Header  className="modal-d">
-                <Modal.Title  className="modal-d">Add new User</Modal.Title>
+            <Modal show={show1} onHide={(e) => setShow1(false)} dialogClassName="modal-d">
+            <Modal.Header >
+                <Modal.Title >Add new User</Modal.Title>
             </Modal.Header >
-            <Modal.Body  className="modal-d"> 
+            <Modal.Body > 
                 <div className="accform">
                     <form onSubmit={singUp}>
                         <div>
@@ -128,11 +128,11 @@ export default function Admin(){
             </Modal.Body>
             </Modal>
 
-            <Modal show={show2} onHide={(e) => setShow2(false)}>
-            <Modal.Header  className="modal-d">
-                <Modal.Title  className="modal-d">Edit User</Modal.Title>
+            <Modal show={show2} onHide={(e) => setShow2(false)} dialogClassName="modal-d"> 
+            <Modal.Header >
+                <Modal.Title >Edit User</Modal.Title>
             </Modal.Header >
-            <Modal.Body  className="modal-d"> 
+            <Modal.Body > 
                 <div className="accform">
                     <form onSubmit={editUser}>
                         <div>
@@ -154,17 +154,17 @@ export default function Admin(){
             </Modal.Body>
             </Modal>
 
-            <Modal show={show3} onHide={(e) => setShow3(false)}>
-                <Modal.Header  className="modal-d" closeButton>
-                    <Modal.Title  className="modal-d">Remove Selected User</Modal.Title>
+            <Modal show={show3} onHide={(e) => setShow3(false)} dialogClassName="modal-d">
+                <Modal.Header  closeButton>
+                    <Modal.Title >Remove Selected User</Modal.Title>
                 </Modal.Header >
-                <Modal.Body  className="modal-d"> 
+                <Modal.Body > 
                     <form onSubmit={removeUser}>
                         <p>{inputForm.newUsername} will be removed.</p>
                         <input type="submit" value="Remove" />
                     </form>
                 </Modal.Body>
-                <Modal.Footer className="modal-d">
+                <Modal.Footer>
                     <p>{message}</p>
                 </Modal.Footer>
             </Modal>

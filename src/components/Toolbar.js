@@ -1,14 +1,11 @@
 import React, { Fragment, useState }  from 'react';
-import logo from '../assets/monitor-logo.png'
+import logo from '../assets/path874.png'
 import { useHistory } from 'react-router-dom';
 import {Modal} from 'react-bootstrap/';
 import {dataService} from '../services/monitorServices'
 
-
-
 export default function Toolbar() {
 
-  
     const user = JSON.parse(sessionStorage.getItem('user'))
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
@@ -44,26 +41,27 @@ return (
 
         <Fragment>
             <div>
-            <nav className="navbar navbar-dark toolbar">
-            <div className="logo">
-            <a className="navbar-brand" href="/"><img src={logo} className="logo" /></a>
-            </div>
-            <div className="dropdown dropleft">
-                <button className="user" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i className="far fa-user fa text-white"></i></button>
-                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a className="btn dropdown-item" onClick={logout} >Logout</a>
-                <a className="btn dropdown-item" onClick={handleShow}>Account Management</a>
-                </div>
-            </div>
-            </nav>
+                <nav className="navbar navbar-dark toolbar">
+                    <div className="logo">
+                        <a className="navbar-brand" href="/"><img src={logo} className="logo" /></a>
+                    </div>
+                    <div className="dropdown dropleft">
+                        <button className="user" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i className="far fa-user fa text-white"></i>
+                        </button>
+                        <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <a className="btn dropdown-item" onClick={logout} >Logout</a>
+                            <a className="btn dropdown-item" onClick={handleShow}>Account Management</a>
+                        </div>
+                    </div>
+                </nav>
             </div>
 
-            <Modal show={show} onHide={handleClose}>
-                <Modal.Header closeButton className="modal-d">
+            <Modal show={show} onHide={handleClose} dialogClassName="modal-d">
+                <Modal.Header closeButton >
                     <Modal.Title>Account Management</Modal.Title>
                 </Modal.Header>
-                <Modal.Body className="modal-d">
+                <Modal.Body >
                     <div className="m-4">
                         <form onSubmit={updateAcc}>
                         <div>
@@ -91,10 +89,12 @@ return (
                                 />
                         </div>
                         <input type="submit" value="Save" />
-                        <p>{message}</p>
                         </form>
                     </div>
                 </Modal.Body>
+                <Modal.Footer>
+                    <p>{message}</p>
+                </Modal.Footer>
             </Modal>
         </Fragment>
     );

@@ -30,13 +30,16 @@ export const dataService = {
     UpdateAcc
 };
 
-axios.interceptors.request.use(function (config) {
-  // Do something before request is sent
-  return config;
-}, function (error) {
-  // Do something with request error
-  return Promise.reject(error);
-});
+axios.interceptors.response.use( (response) => {
+  return response;
+}, (error) => {
+  if (error.response.status) {
+    sessionStorage.removeItem("token");
+    window.location.href ='/login'
+  }
+return Promise.reject(error);
+})
+
 
 async function grapData(object_id, sensor_id){
   const token = sessionStorage.getItem('token')

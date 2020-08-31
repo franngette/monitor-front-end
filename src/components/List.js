@@ -27,8 +27,12 @@ export default function List(props){
                         <td onClick={(e) => onSelectedRow(data,i)} className={selectedRow === i ? "toolbar text-white" : "" }>{Object.values(data)[index]}</td>
                         <td onClick={(e) => onSelectedRow(data,i)} className={selectedRow === i ? "toolbar text-white" : "" }>{Object.values(data)[index+1]}</td>
                         <td onClick={(e) => onSelectedRow(data,i)} className={selectedRow === i ? "toolbar text-white" : "" }>{Object.values(data)[index+2]}</td>
-                        <td onClick={(e) => onSelectedRowRemove(data)}><button className="button-list-icon" title="Remove" ><i className="far fa-trash-alt"></i></button></td>
-                        <td onClick={(e) => onSelectedRowEdit(data)}><button className="button-list-icon" title="Edit"><i className="fas fa-pencil-alt"></i></button></td>
+                        <td className="td-icon">
+                          <div className="list-icon">
+                            <button className="list-icon-rem" title="Remove" onClick={(e) => onSelectedRowRemove(data)}><i className="far fa-trash-alt"></i></button>
+                            <button className="list-icon-edit" title="Edit" onClick={(e) => onSelectedRowEdit(data)}><i className="fas fa-pencil-alt"></i></button>
+                          </div>
+                        </td>
                   </tr>
                   
               )
@@ -39,7 +43,7 @@ export default function List(props){
     return(
           <div className='mb-4 li-bg m-2'>
           <Card.Body>
-            <Table hover responsive="md" size="sm" >
+            <Table hover responsive="md">
                 <thead>
                     <tr>
                       {
