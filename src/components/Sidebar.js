@@ -14,7 +14,7 @@ export default function Sidebar() {
     return (
         <Fragment>
             <div className={'navbar-nav bg-sidebarmenu sidebar sidebar-dark accordion ' + classToggle} id="Sidebar">
-                    <Item title='Sites' icon='far fa-building' divider link='/site' togg={toggled}></Item>
+                    <Item title='Sites' icon='fas fa-building' divider link='/site' togg={toggled}></Item>
                     <Item title='Admin' icon='far fa-user fa' divider link='/adm' togg={toggled}></Item>
                     <Item title='System' icon='far fa-cogs fa' divider link='/system' togg={toggled}></Item>
                     <div className="text-center d-none d-md-inline p-2">

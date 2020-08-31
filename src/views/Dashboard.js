@@ -115,7 +115,7 @@ const  Dashboard = () => {
                     <Widgets data={dataSensor}/>}
 
                         <div className="dash-btn-grap p-4">
-                            <button className="button" onClick={handleShow}>Graph</button>
+                            <button className="button-hide" onClick={handleShow}>Graph</button>
                         </div>
             </div>
 

@@ -35,7 +35,7 @@ axios.interceptors.response.use( (response) => {
 }, (error) => {
   if (error.response.status) {
     sessionStorage.removeItem("token");
-    window.location.href ='/login'
+    window.location.href ='/#/login'
   }
 return Promise.reject(error);
 })

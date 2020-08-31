@@ -1,10 +1,4 @@
-.bodyp {
-  margin: 0;
-  font-family: 'Nunito', 'Raleway';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  width: 100%;
-}
+
 
 .chart-container {
   display: flex;
@@ -93,6 +87,20 @@
 
 .button-add:hover{
  color:#fff;
+}
+
+.button-hide{
+  border-radius: 5px;
+  background-color: #325d9a ;
+  border: none;
+  color:#c6d3e7;
+  padding: 15px 32px;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+.button-hide:hover{
+  color:#fff;
 }
 
 .button{
@@ -274,12 +282,6 @@
   border: none;
 }
 
-.title-wrp{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 #wrapper {
   display: flex;
 }
@@ -336,21 +338,12 @@ input[type=submit]:hover {
   width: 12em;
 }
 
-input[type=text], [type=password], [type=email] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
-}
-
 .accform{
   flex-basis: 50%;
 }
 
 .container-2col{
+  width: 100%;
   margin: 0.5rem;
   display: flex;
   flex-wrap: nowrap;
@@ -358,6 +351,7 @@ input[type=text], [type=password], [type=email] {
 }
 
 .container-2col-center{
+  width: 100%;
   margin: 0.5rem;
   display: flex;
   flex-wrap: nowrap;
@@ -436,31 +430,18 @@ input[type=text], [type=password], [type=email] {
   .widget-row{
     flex-flow: wrap;
   }
-  .dash-btn-grap{
-    display:block; 
-  }
 
   .container-s-2col{
     flex-wrap: wrap;
     justify-content: center;
     height: auto;
 }
-    .container-2col{
+  .container-2col{
     flex-wrap: wrap;
     justify-content: center;
     height: auto;
 }
 
-  .col-60 {
-    width: 100%;
-    margin:10px
-  }
-
-  .dash-sensor{
-    width: 250px;
-    margin: 10px;
-  }
-  
   .dahsboard-grap{
     display: none;
   }
@@ -482,6 +463,28 @@ input[type=text], [type=password], [type=email] {
     justify-content: center;
   }
   
+}
+@media screen and (max-width: 768px) {
+
+  .list-icon-rem{
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .list-icon-edit{
+    height: 1rem;
+    width: 1rem;
+    display: flex;
+    justify-content: center;
+  }
+
+  .li-bg{
+    font-size: 10px;
+    overflow-x: hidden;
+
+  }
 }
 
 .content-title {
@@ -1361,3 +1364,11 @@ line-height: 2rem;
    .sidebar-dark.toggled #sidebarToggle::after {
      color: rgba(255, 255, 255, 0.5);
    }
+   .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    overflow-x: hidden;
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}

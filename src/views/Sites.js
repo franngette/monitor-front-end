@@ -166,7 +166,7 @@ export default function Site(){
     return (
         <div className="container-2col">
             <div className="card-sm-bg col-g-2">
-                <h5 className="c-ec-title"><i className="fas fa-warehouse"></i> Site List</h5>
+                <h5 className="c-ec-title">Site List</h5>
                 <div className="p-1">
                     <List data={sitesData} columns={['ID','Name','Location']} sendData={setSite} remove={removeSelectedSite} edit={editSelectedSite}/>
                 </div>
